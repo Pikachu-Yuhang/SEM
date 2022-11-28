@@ -1,0 +1,339 @@
+/*总一*/
+#total1 {
+    margin: 0 auto;
+    border-top: 5px solid #F0F2F5;
+    border-bottom: 50px solid #F0F2F5;
+    border-left: 1px solid #F0F2F5;
+    border-right: 1px solid #F0F2F5;
+    display: block;
+}
+
+/*头*/
+.top {
+    color:#555b7c;
+    font-family:FZShuTi;
+    font-size:9vmax;
+    letter-spacing: 20px;
+    text-align: center;
+    background: url("@/assets/sea.jpg");
+    height: 200px;
+    background-color: #b6c9ef;
+    background: url("@/assets/sea.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border:none;
+    padding-left: 25px;
+    padding-top: 15px;
+    /*border: solid;*/
+}
+
+.top1 {
+    height: 35px;
+    border-bottom: 1px solid #F0F2F5;
+    padding-left: 25px;
+    padding-top: 15px;
+    /*border: solid;*/
+}
+
+/*主体*/
+.main {
+    padding-top: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 30px;
+}
+
+/*多选（模板名称……）*/
+.sel {
+    color: darkslategrey;
+    padding-left: 10px;
+    padding-top: 5px;
+    height: 35px;
+    width: 140px;
+    background-color: #F0F2F5;
+    border-radius: 5px 0px 0px 5px;
+    border: 1px solid lightgrey;
+}
+
+/*多选之后的那个输入框*/
+.inp {
+    margin-left: -4px;
+    padding-left: 10px;
+    padding-top: 6.5px;
+    height: 25px;
+    width: 300px;
+    border: 1px solid lightgrey;
+    margin-bottom: 15px;
+}
+
+/*那个蓝色的Q*/
+#qstnMark {
+    height: 35px;
+    width: 55px;
+    display: inline-block;
+    background-color: #5899ce;
+    color: white;
+    padding-top: 6.5px;
+    padding-bottom: 2px;
+    margin-left: -5px;
+    border-radius: 0px 5px 5px 0px;
+    border: 1px solid lightgrey;
+    text-align: center;
+    font-family: 'Calibri Light';
+    font-weight: lighter;
+    cursor: pointer;
+}
+
+/*新增模板文件按钮*/
+#addTmplFile {
+    float: right;
+    color: white;
+    padding-left: 10px;
+    padding-top: 5px;
+    height: 35px;
+    width: 120px;
+    background-color: #5899ce;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+/*第一张表*/
+#table1 {
+    border: 1px lightgrey solid;
+    width: 1210px;
+}
+
+/*表头*/
+.tableTitle {
+    background-color: lightsteelblue;
+    font-weight: bold;
+}
+
+/*第一张表中的单元格格式*/
+#table1 td {
+    height: 35px;
+    border: 1px lightgrey solid;
+}
+
+/*第一列格式*/
+.col1 {
+    width: 170px;
+}
+
+/*第二列格式*/
+.col2 {
+    width: 170px;
+}
+
+/*第三列格式*/
+.col3 {
+    width: 170px;
+}
+
+/*第四列格式*/
+.col4 {
+    width: 170px;
+}
+
+/*第五列格式*/
+.col5 {
+    width: 170px;
+}
+
+/*第五列格式*/
+.col6 {
+    width: 170px;
+}
+
+/*第五列格式*/
+.col7 {
+    width: 170px;
+}
+.col8 {
+    width: 170px;
+}
+.col9 {
+    width: 170px;
+}
+.col10 {
+    width: 170px;
+}
+/*第一张表中最下面的表格导航*/
+#lowerLbl {
+    padding-top: 30px;
+}
+
+/*第一张表中最下面的表格导航中的p的格式*/
+#lowerLbl p {
+    color: gray;
+    display: inline;
+}
+
+#lowerLbl select {
+    color: gray;
+    height: 25px;
+    width: 80px;
+    border-radius: 5px;
+    padding-left: 5px;
+    margin-left: 5px;
+}
+
+#lowerLbl button {
+    width: 25px;
+    height: 25px;
+    background-color: #F0F2F5;
+    color: gray;
+    padding-top: 2px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+#lowerLbl input {
+    padding-top: 2px;
+    width: 35px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    text-align: center;
+}
+
+/*总二*/
+#total2 {
+    margin: 0 auto;
+    border-top: 5px solid #F0F2F5;
+    border-bottom: 50px solid #F0F2F5;
+    border-left: 1px solid #F0F2F5;
+    border-right: 1px solid #F0F2F5;
+    display: none;
+}
+
+/*第二张表*/
+#table2 {
+    border: none;
+    width: 1200px;
+}
+
+/*第二张表的行格式*/
+.table2Tr {
+    margin: 15px;
+    padding-top: 50px;
+}
+
+/*第二张表的第一种单元格格式*/
+.table2Td1 {
+    width: 120px;
+    /*border: solid;*/
+    color: darkslategrey;
+}
+
+/*第二张表的第二种单元格格式*/
+.table2Td2 {
+    width: 430px;
+    padding-left: 5px;
+    /*border: solid;*/
+}
+
+/*第二张表的第三种单元格格式*/
+.table2Td3 {
+    padding-left: 5px;
+}
+
+/*第二张表中的输入框格式*/
+#table2 input {
+    width: 420px;
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    padding-left: 15px;
+}
+
+/*第二张表中的p（段落）的格式*/
+#table2 p {
+    color: red;
+    display: inline;
+}
+
+/*提交的那个按钮*/
+#submit1 {
+    height: 35px;
+    width: 70px;
+    border-radius: 5px;
+    color: white;
+    background-color: #5899ce;
+    padding: 0 15px 0 5px;
+    cursor: pointer;
+}
+
+#submit2 {
+    height: 35px;
+    width: 70px;
+    border-radius: 5px;
+    color: white;
+    background-color: #5899ce;
+    padding: 0 15px 0 5px;
+    cursor: pointer;
+}
+
+/*编辑按钮*/
+#btn1 {
+    color: #FFF;
+    background-color: #5899ce;
+    width: 50px;
+    border: none;
+    margin-left: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/*删除按钮*/
+#btn2 {
+    color:#FFF;
+    background-color:rgb(233, 79, 79);
+    width: 50px;
+    border: none;
+    margin-left: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.nav {
+    height: 50px;
+    background: #7e9fdb ;
+}
+
+.nav ul {
+    float: left;
+    margin: 14px 0 0 0;
+    height: 45px;
+    list-style-type: none;
+}
+
+.nav ul li {
+    float: left;
+    padding: 0 0 0 10px;
+    text-decoration: none;
+}
+
+.nav ul li a {
+    float: left;
+    padding: 0 15px 0 5px;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.nav ul li a:active {
+    color: #b8d5f6;
+    text-decoration: none;
+}
+
+.nav .current {
+    background: transparent ;
+}
+
+.nav .current a {
+    color: #181818;
+}
