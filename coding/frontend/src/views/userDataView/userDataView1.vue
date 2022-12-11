@@ -98,7 +98,6 @@
             <img src="map.png" />
           </p>
         </div>
-
       </div>
 
     </div>

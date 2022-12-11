@@ -1,5 +1,6 @@
 from flask import Flask
 from src.accounts import accounts
+from src.tables import tables
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -7,7 +8,7 @@ app.secret_key = "test"
 CORS(app, supports_credentials=True)
 
 app.register_blueprint(accounts, url_prefix='/accounts')
-
+app.register_blueprint(tables, url_prefix='/tables')
 
 @app.route('/')
 def hello():

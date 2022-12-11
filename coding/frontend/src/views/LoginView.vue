@@ -67,16 +67,18 @@ export default {
       e.preventDefault();
       console.log(this.sign_in_name, this.sign_in_pwd)
       this.$http.post('/accounts/login', {
-        'name': this.sign_in_name,
+        'username': this.sign_in_name,
         'password': this.sign_in_pwd
       }).then((res) => { console.log(res); })
     },
     submitSignUp(e) {
       e.preventDefault();
       this.$http.post('/accounts/signup', {
-        'name': this.sign_up_name,
+        'username': this.sign_up_name,
         'email': this.sign_up_email,
         'password': this.sign_up_pwd
+      }).then((res) => {
+        console.log(res)
       });
     }
   }
@@ -95,8 +97,7 @@ export default {
 
 .body {
   align-items: center;
-  background-color: v-bind(style_data.white);
-  background: url("@/assets/sea.jpg");
+  background: url("@/assets/loginBackground.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -120,7 +121,7 @@ export default {
 }
 
 .container {
-  background-color: v-bind(style_data.white);
+  background-color: white;
   border-radius: v-bind(style_data.button_radius);
   box-shadow: 0 0.9rem 1.7rem rgba(0, 0, 0, 0.25),
   0 0.7rem 0.7rem rgba(0, 0, 0, 0.22);
@@ -178,8 +179,8 @@ export default {
 }
 
 .overlay {
-  background-color: v-bind(style_data.lightblue);
-  background: url("@/assets/sea.jpg");
+  background: url("@/assets/loginBackground2.jpg");
+  background-color: white;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -228,14 +229,13 @@ export default {
 }
 
 .btn {
-  background-color: v-bind(style_data.blue);
-  background-image: linear-gradient(90deg, rgb(148, 191, 240) 0%, v-bind(style_data.lightblue) 74%);
+  background: linear-gradient(94.06deg, #73C1E9 3.33%, #9CD0E2 96.7%);
   border-radius: 20px;
   border: none;
   color: #fff;
   cursor: pointer;
   font-size: 1rem;
-  font-weight:lighter;
+  font-weight: 700;
   letter-spacing: 0.1rem;
   padding: 0.9rem 4rem;
   text-transform: uppercase;
@@ -257,7 +257,7 @@ export default {
 }
 
 .form {
-  background-color: v-bind(style_data.white);
+  background: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -268,11 +268,12 @@ export default {
 }
 
 .input {
-  background-color: #fff;
+  background-color: rgb(245, 245, 245);
   border: none;
   padding: 0.9rem 0.9rem;
   margin: 0.5rem 0;
   width: 100%;
+  border-radius: 8px;
 }
 
 @keyframes show {

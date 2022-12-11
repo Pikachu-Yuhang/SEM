@@ -1,40 +1,30 @@
 /*总一*/
 #total1 {
     margin: 0 auto;
-    border-top: 5px solid #F0F2F5;
-    border-bottom: 50px solid #F0F2F5;
-    border-left: 1px solid #F0F2F5;
-    border-right: 1px solid #F0F2F5;
     display: block;
+    background-image: url("@/assets/background.png");
+    background-size: cover;
 }
 
 /*头*/
 .top {
-    color:#555b7c;
-    font-family:FZShuTi;
+    font-weight: 700;
+    background: linear-gradient(272.38deg, #FFF5CF -51.52%, #18A0FB 177.76%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
     font-size:9vmax;
     letter-spacing: 20px;
     text-align: center;
-    background: url("@/assets/sea.jpg");
     height: 200px;
-    background-color: #b6c9ef;
-    background: url("@/assets/sea.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
     background-size: cover;
-    border:none;
     padding-left: 25px;
     padding-top: 15px;
-    /*border: solid;*/
 }
 
 .top1 {
     height: 35px;
-    border-bottom: 1px solid #F0F2F5;
-    padding-left: 25px;
-    padding-top: 15px;
-    /*border: solid;*/
 }
 
 /*主体*/
@@ -53,7 +43,7 @@
     height: 35px;
     width: 140px;
     background-color: #F0F2F5;
-    border-radius: 5px 0px 0px 5px;
+    border-radius: 8px 0 0 8px;
     border: 1px solid lightgrey;
 }
 
@@ -62,7 +52,7 @@
     margin-left: -4px;
     padding-left: 10px;
     padding-top: 6.5px;
-    height: 25px;
+    height: 26px;
     width: 300px;
     border: 1px solid lightgrey;
     margin-bottom: 15px;
@@ -73,7 +63,7 @@
     height: 35px;
     width: 55px;
     display: inline-block;
-    background-color: #5899ce;
+    background-color: rgb(116, 194, 233);
     color: white;
     padding-top: 6.5px;
     padding-bottom: 2px;
@@ -119,6 +109,12 @@
 }
 
 /*第一列格式*/
+.col {
+    width: 170px;
+    height: 40px;
+    border: white solid 1px;
+}
+
 .col1 {
     width: 170px;
 }
@@ -204,11 +200,6 @@
 /*总二*/
 #total2 {
     margin: 0 auto;
-    border-top: 5px solid #F0F2F5;
-    border-bottom: 50px solid #F0F2F5;
-    border-left: 1px solid #F0F2F5;
-    border-right: 1px solid #F0F2F5;
-    display: none;
 }
 
 /*第二张表*/
@@ -264,7 +255,7 @@
     border-radius: 5px;
     color: white;
     background-color: #5899ce;
-    padding: 0 15px 0 5px;
+    padding: 0 15px 0 15px;
     cursor: pointer;
 }
 
@@ -274,7 +265,7 @@
     border-radius: 5px;
     color: white;
     background-color: #5899ce;
-    padding: 0 15px 0 5px;
+    padding: 0 15px 0 15px;
     cursor: pointer;
 }
 
@@ -301,26 +292,31 @@
 }
 
 .nav {
-    height: 50px;
-    background: #7e9fdb ;
+    height: 60px;
+    background: linear-gradient(272.38deg, #FFF5CF -51.52%, #18A0FB 177.76%);
+    width: 100%;
+    overflow-x: scroll;
 }
 
 .nav ul {
     float: left;
     margin: 14px 0 0 0;
+    width: 2500px;
     height: 45px;
     list-style-type: none;
 }
 
+.nav::-webkit-scrollbar {
+    display: none;
+}
+
 .nav ul li {
     float: left;
-    padding: 0 0 0 10px;
     text-decoration: none;
 }
 
 .nav ul li a {
     float: left;
-    padding: 0 15px 0 5px;
     color: #FFF;
     text-decoration: none;
 }
@@ -330,10 +326,7 @@
     text-decoration: none;
 }
 
-.nav .current {
-    background: transparent ;
-}
 
-.nav .current a {
-    color: #181818;
-}
+/*.nav .current {*/
+/*    color: #181818;*/
+/*}*/

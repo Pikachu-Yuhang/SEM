@@ -1,10 +1,11 @@
 /*总一*/
+
+a {
+    text-decoration: none;
+}
+
 #total1 {
     margin: 0 auto;
-    border-top: 5px solid #F0F2F5;
-    border-bottom: 50px solid #F0F2F5;
-    border-left: 1px solid #F0F2F5;
-    border-right: 1px solid #F0F2F5;
     display: block;
 }
 
@@ -15,15 +16,7 @@
     font-size:9vmax;
     letter-spacing: 20px;
     text-align: center;
-    background: url("@/assets/sea.jpg");
     height: 200px;
-    background-color: #b6c9ef;
-    background: url("@/assets/sea.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border:none;
     padding-left: 25px;
     padding-top: 15px;
     /*border: solid;*/
@@ -45,7 +38,7 @@
     height: 35px;
     width: 140px;
     background-color: #F0F2F5;
-    border-radius: 5px 0px 0px 5px;
+    border-radius: 8px 0 0 8px;
     border: 1px solid lightgrey;
 }
 
@@ -54,7 +47,7 @@
     margin-left: -4px;
     padding-left: 10px;
     padding-top: 6.5px;
-    height: 25px;
+    height: 26px;
     width: 300px;
     border: 1px solid lightgrey;
     margin-bottom: 15px;
@@ -80,6 +73,7 @@
     border: 1px solid lightgrey;
     margin-bottom: 15px;
 }
+
 #qstnMark1 {
     height: 35px;
     width: 20px;
@@ -101,42 +95,16 @@
     height: 35px;
     width: 55px;
     display: inline-block;
-    background-color: #5899ce;
+    background-color: rgb(116, 194, 233);
     color: white;
     padding-top: 6.5px;
     padding-bottom: 2px;
     margin-left: -5px;
-    border-radius: 0px 5px 5px 0px;
+    border-radius: 0 8px 8px 0;
     border: 1px solid lightgrey;
     text-align: center;
     font-family: 'Calibri Light';
     font-weight: lighter;
-    cursor: pointer;
-}
-
-/*新增模板文件按钮*/
-#addTmplFile {
-    float: right;
-    color: white;
-    padding-left: 10px;
-    padding-top: 5px;
-    height: 35px;
-    width: 120px;
-    background-color: #5899ce;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-}
-#addTmplFile1 {
-    float: left;
-    color: white;
-    padding-left: 10px;
-    padding-top: 5px;
-    height: 35px;
-    width: 120px;
-    background-color: #5899ce;
-    border-radius: 5px;
-    border: none;
     cursor: pointer;
 }
 
@@ -251,11 +219,6 @@
 /*总二*/
 #total2 {
     margin: 0 auto;
-    border-top: 5px solid #F0F2F5;
-    border-bottom: 50px solid #F0F2F5;
-    border-left: 1px solid #F0F2F5;
-    border-right: 1px solid #F0F2F5;
-    display: none;
 }
 .box{
     text-align: right;
@@ -276,27 +239,33 @@ img {
     max-height: 80%;
     border:none;
 }
+
 .nav {
-    height: 50px;
-    background: #7e9fdb;
+    height: 60px;
+    background: linear-gradient(272.38deg, #FFF5CF -51.52%, #18A0FB 177.76%);
+    width: 100%;
+    overflow-x: scroll;
 }
 
 .nav ul {
     float: left;
     margin: 14px 0 0 0;
+    width: 2500px;
     height: 45px;
     list-style-type: none;
 }
 
+.nav::-webkit-scrollbar {
+    display: none;
+}
+
 .nav ul li {
     float: left;
-    padding: 0 0 0 10px;
     text-decoration: none;
 }
 
 .nav ul li a {
     float: left;
-    padding: 0 15px 0 5px;
     color: #FFF;
     text-decoration: none;
 }
@@ -304,13 +273,5 @@ img {
 .nav ul li a:active {
     color: #b8d5f6;
     text-decoration: none;
-}
-
-.nav .current {
-    background: transparent;
-}
-
-.nav .current a {
-    color: #181818;
 }
 

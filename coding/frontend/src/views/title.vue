@@ -25,23 +25,6 @@ export default {
 
 <style scoped>
 
-.body {
-  color: #555b7c;
-  font-family: FZShuTi;
-  font-size: 9vmax;
-  letter-spacing: 20px;
-  align-items: center;
-  background-color: v-bind(style_data.white);
-  background: url("@/assets/title.png");
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: grid;
-  height: 100vh;
-  place-items: center;
-}
-
 .top1 {
   color: #1d1e26;
   font-family: -apple-system,

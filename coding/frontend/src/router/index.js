@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import title from "@/views/title.vue";
 import LoginView from "@/views/LoginView";
 import dataView from "@/views/dataView/dataView.vue";
+import AddTableView from "@/views/AddTableView.vue";
 import dataView1 from "@/views/dataView/dataView1.vue";
 import dataView2 from "@/views/dataView/dataView2.vue";
 import dataView3 from "@/views/dataView/dataView3.vue";
@@ -12,6 +13,7 @@ import userDataView2 from "@/views/userDataView/userDataView2.vue";
 import userDataView3 from "@/views/userDataView/userDataView3.vue";
 import userDataView4 from "@/views/userDataView/userDataView4.vue";
 import userDataView5 from "@/views/userDataView/userDataView5.vue";
+import userDataView from "@/views/userDataView/userDataView.vue";
 
 const routes = [
   {
@@ -25,33 +27,18 @@ const routes = [
     component: LoginView
   },
   {
-    path: '/data/:data_id',
+    path: '/data',
     component: dataView
   },
   {
-    path: '/data1',
-    name: 'data1',
-    component: dataView1
+    path: '/addTable',
+    name: 'addTable',
+    component: AddTableView
   },
   {
-    path: '/data2',
-    name: 'data2',
-    component: dataView2
-  },
-  {
-    path: '/data3',
-    name: 'data3',
-    component: dataView3
-  },
-  {
-    path: '/data4',
-    name: 'data4',
-    component: dataView4
-  },
-  {
-    path: '/data5',
-    name: 'data5',
-    component: dataView5
+    path: '/userData',
+    name: 'userData',
+    component: userDataView
   },
   {
     path: '/userData1',

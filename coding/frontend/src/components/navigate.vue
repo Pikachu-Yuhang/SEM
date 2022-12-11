@@ -3,45 +3,43 @@
     <div class="top">
       渔我所欲
     </div>
-    <div class="nav clearfloat">
+    <div class="nav">
       <ul>
-        <li v-for="(item, i) in links" :class="{'current': i === current}">
-          <router-link :to="item.data_link" v-text="item.name"></router-link>
+        <li v-for="(item, i) in navChoice"
+            class="navChoice"
+            :class="{'currentChoice': i == current}"
+            @click="changeNavChoice(i)"
+            v-text="item">
         </li>
       </ul>
     </div>
-
   </div>
 </template>
 
 <script>
 export default {
   name: "navigate",
-  props: {
-    current: {
-      required: true
-    }
-  },
   data() {
     return {
-      links: [
-        {
-          data_link: '/data/1',
-          name: '淡水养殖产量'
-        },
-        {
-          data_link: '/data/2',
-          name: '海水捕捞产量'
-        },
-        {
-          data_link: '/data/3',
-          name: '海水养殖产量'
-        },
-        {
-          data_link: '/data/4',
-          name: '渔业贸易数据分析'
-        }
+      current: 0,
+      navChoice: [
+          '淡水养殖产量',
+          '海水捕捞产量',
+          '海水养殖产量',
+          '渔业贸易数据分析'
       ]
+    }
+  },
+  created() {
+    this.$http.get("/tables/sources")
+        .then((res) => {
+          this.navChoice = res.data.source_list;
+        });
+  },
+  methods: {
+    changeNavChoice(currentChoice) {
+      this.current = currentChoice;
+      this.$emit('changeCurrent', currentChoice);
     }
   }
 }
@@ -50,5 +48,19 @@ export default {
 <style scoped>
 
 @import "@/views/dataView/data_view_style.css";
+
+.navChoice {
+  color: white;
+  padding: 5px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 20px;
+  transition: all 0.2s;
+}
+
+.currentChoice {
+  color: #333333;
+  background-color: rgba(255, 255, 255, 0.75);
+}
 
 </style>
