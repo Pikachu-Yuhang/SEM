@@ -35,14 +35,32 @@
             <th v-for="item in tableAttributes" v-text="item"></th>
           </tr>
 
-        <tr v-for="(row, index) in tableRows.slice((currentPage - 1) * 20, currentPage * 20)">
-          <td v-for="item in row">
-            <p v-show="!modifyList[index]">{{item}}</p>
-            <input v-if="modifyList[index]">
+        <tr v-for="(row, index) in tableRows.slice((currentPage - 1) * 15, currentPage * 15)">
+          <td>
+            <p v-show="!modifyList[(index + 15 * (currentPage - 1))]">{{row.city}}</p>
+            <input v-if="modifyList[(index + 15 * (currentPage - 1))]" :id="'cityModify'+(index + 15 * (currentPage - 1))" :value="tableRows[(index + 15 * (currentPage - 1))].city">
           </td>
-          <td v-if="mode === 'admin'">
-            <button class="modifyButton" @click="startModify" :value="index">修改</button>
-            <button class="deleteButton" @click="deleteRow">删除</button>
+          <td>
+            <p v-show="!modifyList[(index + 15 * (currentPage - 1))]">{{row.year}}</p>
+            <input v-if="modifyList[(index + 15 * (currentPage - 1))]" :id="'yearModify'+(index + 15 * (currentPage - 1))" :value="tableRows[(index + 15 * (currentPage - 1))].year">
+          </td>
+          <td>
+            <p v-show="!modifyList[(index + 15 * (currentPage - 1))]">{{row.kind}}</p>
+            <input v-if="modifyList[(index + 15 * (currentPage - 1))]" :id="'kindModify'+(index + 15 * (currentPage - 1))" :value="tableRows[(index + 15 * (currentPage - 1))].kind">
+          </td>
+          <td>
+            <p v-show="!modifyList[(index + 15 * (currentPage - 1))]">{{row.num}}</p>
+            <input v-if="modifyList[(index + 15 * (currentPage - 1))]" :id="'numModify'+(index + 15 * (currentPage - 1))" :value="tableRows[(index + 15 * (currentPage - 1))].num">
+          </td>
+
+          <td v-if="mode === 'admin' && !modifyList[(index + 15 * (currentPage - 1))]">
+            <button class="modifyButton" @click="startModify((index + 15 * (currentPage - 1)))" :value="(index + 15 * (currentPage - 1))">修改</button>
+            <button class="deleteButton" @click="deleteRow((index + 15 * (currentPage - 1)))">删除</button>
+          </td>
+
+          <td v-if="mode === 'admin' && modifyList[(index + 15 * (currentPage - 1))]">
+            <button class="submitButton" @click="submitModify((index + 15 * (currentPage - 1)))" :value="(index + 15 * (currentPage - 1))">完成</button>
+            <button class="cancelButton" @click="cancelModify((index + 15 * (currentPage - 1)))">取消</button>
           </td>
         </tr>
 
@@ -57,7 +75,7 @@
         </tr>
       </table>
 
-      <data-map v-show="ifShowMap" ref="map"></data-map>
+      <data-map id="dataMap" v-show="ifShowMap" ref="map"></data-map>
 
       <div id="lowerLbl" align="center">
         <p>共</p>
@@ -99,7 +117,7 @@ export default {
 
       /*information about the current table*/
       current: 0,
-      tableName: '远洋渔业',
+      tableName: '水产品加工',
       tableAttributes: [
           '省份',
           '时间',
@@ -107,20 +125,10 @@ export default {
           '数值'
       ],
       currentYear: 0,
-      yearList: [
-          '全部',
-          '2013',
-          '2014',
-          '2015',
-          '2016'
-      ],
+      yearList: [],
       currentKind: 0,
-      kindList: [
-          '全部',
-          '鲫鱼',
-          '草鱼'
-      ],
-      tableRows: [],
+      kindList: [],
+      tableRows: [],  // main data
       currentPage: 1,
       modifyList: [],
 
@@ -137,12 +145,16 @@ export default {
     if (this.mode === 'admin')
       this.tableAttributes.push('操作');
     this.$http.post("/tables/getall", {
-      'tablename': '远洋渔业',
+      'tablename': '水产品加工',
     }).then((res) => {
-      this.tableRows = res.data;
+      this.tableRows = res.data.data;
+      this.yearList = res.data.year;
+      this.yearList.unshift('全部');
+      this.kindList = res.data.kind;
+      this.kindList.unshift('全部');
       for (let i in this.tableRows.length)
         this.modifyList[i] = false;
-    })
+    });
   },
   methods: {
     changeCurrentYear(event) {
@@ -152,16 +164,38 @@ export default {
       this.currentKind = event.target.value;
     },
     filterData() {
-      this.$http.post('/tables/data', {
+      this.$http.post('/tables/data_4', {
         'tablename': this.tableName,
         'kind': this.kindList[this.currentKind],
         'year': this.yearList[this.currentYear]
       }).then((res) => {
-        console.log(res);
-      })
+        this.tableRows = res.data.data;
+      });
+      if (this.ifShowMap) {
+        this.$http.post('/tables/data', {
+          'tablename': this.tableName,
+          'kind': this.kindList[this.currentKind],
+          'year': this.yearList[this.currentYear]
+        }).then((res) => {
+          this.$refs.map.changeMap(res.data.data, this.kindList[this.currentKind], this.tableName, parseInt(res.data.max))
+        });
+      }
     },
-    changeCurrentTable(new_current) {
+    changeCurrentTable(new_current, new_name) {
       this.current = new_current;
+      this.tableName = new_name;
+      this.ifShowMap = false;
+      this.$http.post("/tables/getall", {
+        'tablename': this.tableName,
+      }).then((res) => {
+        this.tableRows = res.data.data;
+        for (let i in this.tableRows.length)
+          this.modifyList[i] = false;
+        this.kindList = res.data.kind;
+        this.kindList.unshift('全部');
+        this.yearList = res.data.year;
+        this.yearList.unshift('全部');
+      });
     },
     startAdd() {
       this.adding = true;
@@ -173,7 +207,7 @@ export default {
         this.newRow[item] = '';
       this.adding = false;
       this.$http.post('/edit/insert', {
-        'tablename': '远洋渔业',
+        'tablename': this.tableName,
         'city': newRowToAdd.city,
         'year': '2022',
         'kind': '都可以',
@@ -185,37 +219,46 @@ export default {
     cancelAdd() {
       this.adding = false;
     },
-    startModify(event) {
-      this.modifyList[event.target.value] = true;
+    startModify(index) {
+      this.modifyList[index] = true;
     },
-    submitModify() {
+    submitModify(index) {
+      let city = document.getElementById('cityModify' + index);
+      let year = document.getElementById('yearModify' + index);
+      let kind = document.getElementById('kindModify' + index);
+      let num = document.getElementById('numModify' + index);
       this.$http.post('/edit/update', {
-        "tablename": '',
-        "del_city": __,
-        "del_year": __,
-        "del_kind": __,
-        "del_num":  __,
-        "neo_city": __,
-        "neo_year": __,
-        "neo_kind": __,
-        "neo_num":  __
+        "tablename": this.tableName,
+        "del_city": this.tableRows[index].city,
+        "del_year": this.tableRows[index].year,
+        "del_kind": this.tableRows[index].kind,
+        "del_num":  this.tableRows[index].num,
+        "neo_city": city.value,
+        "neo_year": year.value,
+        "neo_kind": kind.value,
+        "neo_num":  num.value
       }).then((res) => {
         console.log(res);
+        this.modifyList[index] = false;
+        this.tableRows[index].city = city.value;
+        this.tableRows[index].year = year.value;
+        this.tableRows[index].kind = kind.value;
+        this.tableRows[index].num = num.value;
       });
     },
-    deleteRow() {
+    cancelModify(index) {
+      this.modifyList[index] = false;
+    },
+    deleteRow(index) {
       this.$http.post('/edit/delete', {
-        "tablename": '',
-        "del_city": __,
-        "del_year": __,
-        "del_kind": __,
-        "del_num":  __,
-        "neo_city": __,
-        "neo_year": __,
-        "neo_kind": __,
-        "neo_num":  __
+        "tablename": this.tableName,
+        "city": this.tableRows[index].city,
+        "year": this.tableRows[index].year,
+        "kind": this.tableRows[index].kind,
+        "num":  this.tableRows[index].num
       }).then((res) => {
-        console.log(res)
+        console.log(res);
+        this.tableRows.splice(index, 1);
       });
     },
     lastPage() {
@@ -224,21 +267,33 @@ export default {
       }
     },
     nextPage() {
-      console.log(parseInt((this.tableRows.length - 1) / 20) + 1);
-      if (this.currentPage !== parseInt((this.tableRows.length - 1) / 20) + 1)
+      console.log(parseInt((this.tableRows.length - 1) / 15) + 1);
+      if (this.currentPage !== parseInt((this.tableRows.length - 1) / 15) + 1)
         this.currentPage += 1;
     },
     goPage(event) {
       let page = parseInt(event.target.value)
       if (page <= 0)
         this.currentPage = 1;
-      else if (page > parseInt((this.tableRows.length - 1) / 20) + 1)
-        this.currentPage = parseInt((this.tableRows.length - 1) / 20) + 1;
+      else if (page > parseInt((this.tableRows.length - 1) / 15) + 1)
+        this.currentPage = parseInt((this.tableRows.length - 1) / 15) + 1;
       else
         this.currentPage = page;
     },
     showMap() {
-      this.ifShowMap = !this.ifShowMap;
+      if (this.ifShowMap) {
+        this.ifShowMap = false;
+      }
+      else {
+        this.$http.post('/tables/data', {
+          'tablename': this.tableName,
+          'kind': this.kindList[this.currentKind],
+          'year': this.yearList[this.currentYear]
+        }).then((res) => {
+          this.$refs.map.changeMap(res.data.data, this.kindList[this.currentKind], this.tableName, parseInt(res.data.max))
+          this.ifShowMap = true;
+        });
+      }
     },
   }
 }
@@ -279,7 +334,7 @@ export default {
 #table1 {
   margin: 15px auto 0;
   border: none;
-  width: 95%;
+  width: 90%;
   box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   transition: all 0.3s;
@@ -317,6 +372,10 @@ export default {
   height: 40px;
   border: none;
   border-bottom: 1px solid rgb(220, 220, 220);
+}
+
+#table1 td p {
+  text-align: center;
 }
 
 #table1 tr:last-child td {
@@ -374,6 +433,12 @@ export default {
 .filter {
   position: relative;
   width: 97%;
+}
+
+#dataMap {
+  position: absolute;
+  right: 0;
+  top: 150px;
 }
 
 </style>

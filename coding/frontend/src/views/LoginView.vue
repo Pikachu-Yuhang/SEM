@@ -8,7 +8,7 @@
           <input v-model="sign_up_name" type="user" placeholder="用户名" class="input"/>
           <input v-model="sign_up_email" type="email" placeholder="电子邮箱" class="input" />
           <input v-model="sign_up_pwd" type="password" placeholder="密码" class="input" />
-          <button class="btn">注册</button>
+          <router-link to="/data"><button class="btn">注册</button></router-link>
         </form>
       </div>
 
@@ -19,7 +19,7 @@
           <input v-model="sign_in_name" type="user" placeholder="用户名" class="input" />
           <input v-model="sign_in_pwd" type="password" placeholder="密码" class="input" />
           <a href="#" class="link">忘记密码?</a>
-          <button class="btn">登录</button>
+          <router-link to="/data"><button class="btn">登录</button></router-link>
         </form>
       </div>
 
@@ -69,7 +69,7 @@ export default {
       this.$http.post('/accounts/login', {
         'username': this.sign_in_name,
         'password': this.sign_in_pwd
-      }).then((res) => { console.log(res); })
+      }).then((res) => {});
     },
     submitSignUp(e) {
       e.preventDefault();
@@ -77,9 +77,7 @@ export default {
         'username': this.sign_up_name,
         'email': this.sign_up_email,
         'password': this.sign_up_pwd
-      }).then((res) => {
-        console.log(res)
-      });
+      }).then((res) => {});
     }
   }
 }

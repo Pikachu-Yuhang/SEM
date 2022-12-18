@@ -1,9 +1,9 @@
 <template>
   <div class="main">
-    <div class="box"><br>
-      <input class="newButton" type="button" value="添加图层" onclick="inimage()" /><br><br>
-      <input class="newButton" type="button" value="删除图层" onclick="delimage()" />
-    </div>
+<!--    <div class="box"><br>-->
+<!--      <input class="newButton" type="button" value="添加图层"/><br><br>-->
+<!--      <input class="newButton" type="button" value="删除图层"/>-->
+<!--    </div>-->
     <echarts-map ref="map"></echarts-map>
   </div>
 </template>
@@ -16,8 +16,8 @@ export default {
   name: "dataMap",
   components: {EchartsMap},
   methods: {
-    changeMap(param) {
-      this.$refs.map.init(param)
+    changeMap(mapData, tableName, tableSubName, max) {
+      this.$refs.map.init(mapData, tableName, tableSubName, max);
     }
   }
 }

@@ -22,12 +22,7 @@ export default {
   data() {
     return {
       current: 0,
-      navChoice: [
-          '淡水养殖产量',
-          '海水捕捞产量',
-          '海水养殖产量',
-          '渔业贸易数据分析'
-      ]
+      navChoice: []
     }
   },
   created() {
@@ -39,7 +34,7 @@ export default {
   methods: {
     changeNavChoice(currentChoice) {
       this.current = currentChoice;
-      this.$emit('changeCurrent', currentChoice);
+      this.$emit('changeCurrent', currentChoice, this.navChoice[currentChoice]);
     }
   }
 }

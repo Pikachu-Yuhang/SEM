@@ -1,6 +1,6 @@
 <template>
-  <navigate :current="current"></navigate>
-  <data-table mode="user"></data-table>
+  <navigate @changeCurrent="changeCurrent" :current="current"></navigate>
+  <data-table ref="data_table" mode="user"></data-table>
 </template>
 
 <script>
@@ -25,6 +25,10 @@ export default {
     },
     hideMap() {
       this.ifShowMap = false;
+    },
+    changeCurrent(new_current, new_name) {
+      this.current = new_current;
+      this.$refs.data_table.changeCurrentTable(new_current, new_name);
     }
   }
 }

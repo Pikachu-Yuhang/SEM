@@ -17,9 +17,9 @@ export default {
     }
   },
   methods: {
-    changeCurrent(new_current) {
+    changeCurrent(new_current, new_name) {
       this.current = new_current;
-      this.$refs.data_table.changeCurrentTable(new_current);
+      this.$refs.data_table.changeCurrentTable(new_current, new_name);
     }
   }
 }
