@@ -1,6 +1,6 @@
 # README
 
-![banner](.\img\banner.png)
+<img src=".\img\banner.png">
 
 <p align="center">
     <img src=https://img.shields.io/badge/lisence-MIT-3B9DDF?style=flat-square>
@@ -23,7 +23,7 @@
 
 <center>界面预览</center>
 
-![main](.\img\main.png)
+<img src=".\img\main.png">
 
 ​	“渔我所欲”渔业数据可视化平台旨在降低渔业从业人员获取并分析历年行业数据的门槛，提供了一站式数据检索及可视化的开源解决方案。该平台聚合了来自多个官方平台的统计数据，并支持按年份、地区、数据类别等信息进行筛选，以 "数据表 + 产业地图" 的形式直观的向用户展现行业数据的地域差异与时间差异。此外，本平台也实现了基于历年数据的“智能预测”功能，能够预测并以地图形式呈现下一年的预期数据，以帮助用户进行决策。
 
